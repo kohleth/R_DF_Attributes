@@ -21,20 +21,22 @@ getAttr=function(d){
   Ntime=N(c("POSIXt","POSIXct","POSIXlt"))
   
   data.frame(dataset=Dname,
-             N_row=nrow(d),
-             N_col=ncol(d),
-             N_numeric=Nnum,
-             N_factor=Nfac,
-             N_ordered=Norder,
-             N_logical=Nlogical,
-             N_binary_factor=NBfac,
-             N_multi_factor=Nmulti,
-             N_char=Nchar,
-             N_asis=NAsIs,
-             N_date=NDate,
-             N_time=Ntime)
+             row=nrow(d),
+             col=ncol(d),
+             numeric=Nnum,
+             factor=Nfac,
+             ordered=Norder,
+             logical=Nlogical,
+             binary_factor=NBfac,
+             multi_factor=Nmulti,
+             char=Nchar,
+             asis=NAsIs,
+             date=NDate,
+             time=Ntime)
 }
 
 dd=data()$results[,"Item"]
 
-do.call(rbind,Filter(function(x)!is.null(x),sapply(dd,function(x)getAttr(x))))
+dt=do.call(rbind,Filter(function(x)!is.null(x),sapply(dd,function(x)getAttr(x))))
+
+write.csv(dt,file="R_DF_Attributes.csv",row.names=F)
