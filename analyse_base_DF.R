@@ -20,6 +20,7 @@ getAttr=function(d){
   NDate=N("Date")
   Ntime=N(c("POSIXt","POSIXct","POSIXlt"))
   
+
   data.frame(dataset=Dname,
              row=nrow(d),
              col=ncol(d),
@@ -33,6 +34,7 @@ getAttr=function(d){
              asis=NAsIs,
              date=NDate,
              time=Ntime)
+
 }
 
 dd=data()$results[,"Item"]
